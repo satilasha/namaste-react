@@ -1,32 +1,34 @@
-.header  {
+.header {
    display: flex;
    justify-content: space-between;
    border: 1px solid black;
 }
 
-.nav-items > ul {
+.nav-items>ul {
    list-style-type: none;
-    font-size: 20px;
+   font-size: 20px;
    display: flex;
+   padding: 10px;
 }
 
-.nav-items > ul > li {
-    padding: 10px;
+.nav-items>ul>li {
+   padding: 10px;
    margin: 0 20px;
 }
 
 
 .logo {
    width: 200px;
-  
+
 }
 
 .nav-items {
-    display: flex;
+   display: flex;
 
 }
+
 .search {
-    padding: 5px;
+   padding: 5px;
 }
 
 .res-card {
@@ -34,11 +36,12 @@
    margin: 20px;
    padding: 10px;
    background-color: antiquewhite;
- 
+
 }
 
-.res-card:hover  {
-      box-shadow: 2px 2px 5px grey;
+.res-card:hover {
+   box-shadow: 2px 2px 5px grey;
+   cursor: pointer;
 }
 
 .res-logo {
@@ -47,16 +50,56 @@
 }
 
 .res-container {
-    display: flex;
-    flex-wrap: wrap;
+   display: flex;
+   flex-wrap: wrap;
 }
 
-.res-card h3, .res-card h4 {
-    word-break: break-word;
+.res-card h3,
+.res-card h4 {
+   word-break: break-word;
 }
 
 .res-container {
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
+}
+
+.filter {
+   margin: 10px;
+}
+
+.filter:hover .filter-button {
+   background-color: lightgrey;
+   cursor: pointer;
+}
+
+.shimmer-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+}
+
+.shimmer-card {
+   width: 200px;
+   height: 250px;
+   margin: 20px;
+   padding: 10px;
+   background-color: #f6f7f8;
+   background-image: linear-gradient(90deg, #f6f7f8 0px, #edeef1 40px, #f6f7f8 80px);
+   background-size: 600px;
+   animation: shimmer 1.2s infinite;
+}
+
+.login-btn {
+   padding: 5px 15px;
+   font-size: 16px;
+   height: 45px;
+   cursor: pointer;
+
+}
+
+.filter {
+   display : flex;
+   padding: 10px;
 }
