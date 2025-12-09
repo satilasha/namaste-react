@@ -1,8 +1,10 @@
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Shimmer from "./Shimmer";
-import { RESTAURANT_LIST_API } from "../utils/constants.js";
+
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus.js";
+import useRestaurantList from "../utils/useRestaurantList.js";
 
 console.log("BODY FILE LOADED - SHOULD ALWAYS PRINT");
 
@@ -10,24 +12,20 @@ console.log("BODY FILE LOADED - SHOULD ALWAYS PRINT");
 const Body = () => {
     // local state variable - super powerful
     // use to create local state variable inside a component
-    const [res, setRes] = useState([])
-    const [filteredRes, setFilteredRes] = useState([])
     const [searchText, setSearchText] = useState("")
-
+   
     // if no dependency array, useEffect will be called on every re-render
     // if empty dependency array, useEffect will be called only once after initial render
     // if dependency array with variables, useEffect will be called whenever those variables change
-    useEffect(() => {
-        fetchData()
-    }, [])
 
-    const fetchData = async () => {
-        const data = await fetch(RESTAURANT_LIST_API)
-        const json = await data.json()
+    const {res, filteredRes, setFilteredRes} = useRestaurantList()
+   
+    const onlineStatus = useOnlineStatus();
 
-        setRes(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        setFilteredRes(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    if(onlineStatus === false){
+        return <h1>🔴 You are offline! Please check your internet connection.</h1>
     }
+
     return res.length === 0 ? (
         <Shimmer />
     ) :

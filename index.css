@@ -103,3 +103,9 @@
    display : flex;
    padding: 10px;
 }
+
+.user-component {
+   padding: 10px;
+   border: 1px solid black;
+   height: fit-content;
+}

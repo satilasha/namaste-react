@@ -1,4 +1,4 @@
-const { IMAGE_CDN_URL } = require("../utils/constants.js");
+import { IMAGE_CDN_URL } from "../utils/constants.js";
 
 const RestaurantCard = (props) => {
 
