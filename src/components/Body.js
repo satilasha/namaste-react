@@ -13,16 +13,16 @@ const Body = () => {
     // local state variable - super powerful
     // use to create local state variable inside a component
     const [searchText, setSearchText] = useState("")
-   
+
     // if no dependency array, useEffect will be called on every re-render
     // if empty dependency array, useEffect will be called only once after initial render
     // if dependency array with variables, useEffect will be called whenever those variables change
 
-    const {res, filteredRes, setFilteredRes} = useRestaurantList()
-   
+    const { res, filteredRes, setFilteredRes } = useRestaurantList()
+
     const onlineStatus = useOnlineStatus();
 
-    if(onlineStatus === false){
+    if (onlineStatus === false) {
         return <h1>🔴 You are offline! Please check your internet connection.</h1>
     }
 
@@ -31,14 +31,17 @@ const Body = () => {
     ) :
         (
             <div className="body">
-                <div className="filter">
-                    <div className="search">
-                        <input text="text" className="search-box" value={searchText} onChange={
-                            (e) => {
-                                setSearchText(e.target.value)
-                            }
-                        }></input>
-                        <button className="search-button" onClick={
+                <div className="px-60 h-56 mx-auto flex items-center justify-around">
+                    <div className="flex items-center gap-4">
+                        <input text="text"
+                            className=" w-80 px-4 py-3 rounded-xl bg-gray-100 shadow-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition"
+
+                            value={searchText} onChange={
+                                (e) => {
+                                    setSearchText(e.target.value)
+                                }
+                            }></input>
+                        <button className="px-5 py-3 font-medium rounded-xl shadow-md hover:bg-orange-500 active:scale-95 transition bg-orange-200 text-gray-800" onClick={
                             () => {
                                 const filteredRes = res.filter(
                                     restaurants => (restaurants.info.name.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -49,7 +52,7 @@ const Body = () => {
                         }>Search</button>
                     </div>
 
-                    <button className="filter-button" onClick={
+                    <button className="px-5 py-3 font-medium rounded-xl shadow-md hover:bg-orange-500 active:scale-95 transition bg-orange-200 text-gray-800" onClick={
                         () => {
                             const filteredRes = res.filter(
                                 restaurants => restaurants.info.avgRating > 4.6
@@ -58,7 +61,7 @@ const Body = () => {
                         }}>Top Rated Restaurants</button>
                 </div>
 
-                <div className="res-container">
+                <div className="px-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {filteredRes.map(restaurants => (
                         <Link key={restaurants.info.id} to={`/restaurant/${restaurants?.info.id}`}> <RestaurantCard resData={restaurants} />   </Link>
                     ))}

@@ -47,10 +47,16 @@ class UserClass extends React.Component {
         return (
 
             console.log("UserClass Component Rendered"),
-            <div className="user-component">
-                <h1>Name : {name}</h1>
-                <img src={avatar_url} alt="User Avatar" />   
-                <h2>User Name : {login}</h2>
+            <div className="user-component max-w-xs mx-auto bg-white rounded-xl shadow-md p-6 mt-6 text-center transition hover:shadow-lg">
+                <h1 className="text-xl font-bold mb-3 text-gray-800">Name: {name}</h1>
+
+                <img
+                    src={avatar_url}
+                    alt="User Avatar"
+                    className="w-32 h-32 object-cover rounded-full mx-auto mb-4 shadow-sm"
+                />
+
+                <h2 className="text-gray-700 text-lg font-medium">User Name: {login}</h2>
             </div>
         )
     }
