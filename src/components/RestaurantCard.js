@@ -3,7 +3,7 @@ import { IMAGE_CDN_URL } from "../utils/constants.js";
 const RestaurantCard = (props) => {
 
     const { resData } = props;
-    const { name, cloudinaryImageId, costForTwo, cuisines, avgRating} = resData.info
+    const { name, cloudinaryImageId, costForTwo, cuisines, avgRating } = resData.info
 
     return (
         <div className="res-card rounded-xl shadow-md p-4 bg-white hover:shadow-lg transition">
@@ -16,4 +16,17 @@ const RestaurantCard = (props) => {
     )
 }
 
-export default RestaurantCard;
+const withPromotedLabel = (RestaurantCard) => {
+    return (props) => {
+        return (
+            <div>
+                <label className="inline-block bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full shadow-sm mb-2">
+                    Promoted
+                </label>
+                <RestaurantCard {...props}/>
+            </div>
+        )
+    }
+}
+
+export { RestaurantCard, withPromotedLabel };

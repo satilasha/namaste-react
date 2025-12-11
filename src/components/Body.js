@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import { RestaurantCard, withPromotedLabel } from "./RestaurantCard";
 import { useState } from "react";
 import Shimmer from "./Shimmer";
 
@@ -13,6 +13,8 @@ const Body = () => {
     // local state variable - super powerful
     // use to create local state variable inside a component
     const [searchText, setSearchText] = useState("")
+
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard)
 
     // if no dependency array, useEffect will be called on every re-render
     // if empty dependency array, useEffect will be called only once after initial render
@@ -41,7 +43,7 @@ const Body = () => {
                                     setSearchText(e.target.value)
                                 }
                             }></input>
-                        <button className="px-5 py-3 font-medium rounded-xl shadow-md hover:bg-orange-500 active:scale-95 transition bg-orange-200 text-gray-800" onClick={
+                        <button className="px-5 py-3 font-medium rounded-xl shadow-md hover:bg-pink-600 hover:text-white active:scale-95 transition bg-pink-200 text-gray-800" onClick={
                             () => {
                                 const filteredRes = res.filter(
                                     restaurants => (restaurants.info.name.toLowerCase().includes(searchText.toLowerCase()) ||
@@ -52,7 +54,7 @@ const Body = () => {
                         }>Search</button>
                     </div>
 
-                    <button className="px-5 py-3 font-medium rounded-xl shadow-md hover:bg-orange-500 active:scale-95 transition bg-orange-200 text-gray-800" onClick={
+                    <button className="px-5 py-3 font-medium rounded-xl shadow-md hover:bg-pink-600 hover:text-white active:scale-95 transition bg-pink-200 text-gray-800" onClick={
                         () => {
                             const filteredRes = res.filter(
                                 restaurants => restaurants.info.avgRating > 4.6
@@ -60,11 +62,15 @@ const Body = () => {
                             setFilteredRes(filteredRes)
                         }}>Top Rated Restaurants</button>
                 </div>
-
-                <div className="px-50 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {filteredRes.map(restaurants => (
-                        <Link key={restaurants.info.id} to={`/restaurant/${restaurants?.info.id}`}> <RestaurantCard resData={restaurants} />   </Link>
-                    ))}
+                <div className="w-9/12 m-auto ">
+                    <h1 className="text-2xl font-bold mb-6 w-full">Restaurants with online food delivery near you</h1>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                        {filteredRes.map(restaurants => (
+                            <Link key={restaurants.info.id} to={`/restaurant/${restaurants?.info.id}`}>
+                                {restaurants.info.promoted ? (<RestaurantCardPromoted resData={restaurants} />) : (<RestaurantCard resData={restaurants} />)}
+                            </Link>
+                        ))}
+                    </div>
                 </div>
             </div>
         )

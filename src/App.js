@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
@@ -8,6 +8,7 @@ import RestaurantMenu from "./components/RestaurantMenu.js";
 import Error from "./components/Error.js";
 // import Grocery from "./components/Grocery.js";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utils/UserContext.js";
 
 // chunking
 // lazy loading
@@ -18,13 +19,28 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 const Grocery = lazy(() => import("./components/Grocery.js"));
 
 const AppLayout = () => {
+
+    const [projectName, setProjectName] = useState()
+
+    //dummy api call to update context
+    useEffect(() => {
+        const project = "Namaste React"
+
+        setProjectName(project)
+    }, [])
+
+
     return (
+        <UserContext.Provider value={{project: projectName}}>
         <div className="app">
             <Header />
             <Outlet />
         </div>
+        </UserContext.Provider>
     )
 }
+
+
 
 const appRouter = createBrowserRouter([
     {
