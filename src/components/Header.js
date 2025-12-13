@@ -2,11 +2,15 @@ import { LOGO_URL } from "../utils/constants.js";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 
     const [btnName, setBtnName] = useState("Login");
     const onlineStatus = useOnlineStatus();
+
+
+    const cartItems = useSelector((store) => store.cart.items)
 
     return (
         <header className="bg-pink-100/20 shadow-md sticky top-0 z-50">
@@ -52,7 +56,7 @@ const Header = () => {
                         </li>
 
                         <li className="hover:text-pink-600 transition cursor-pointer">
-                            Cart 🛒
+                            <Link to="/cart">Cart 🛒 - {cartItems.length}</Link> 
                         </li>
 
                         <li>

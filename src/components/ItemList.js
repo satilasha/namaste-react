@@ -1,8 +1,20 @@
+import { useDispatch } from "react-redux"
 import { IMAGE_CDN_URL } from "../utils/constants"
+import { addItem } from "../utils/appStore/cartSlice"
 
-const ItemList = (data) => {
+const ItemList = ({ data }) => {
 
-    const { name, price, defaultPrice, description, imageId } = data?.data?.card?.info
+    const item = data?.card?.info
+
+    console.log(item)
+
+    const { name, price, defaultPrice, description, imageId } = item
+
+    const dispatch = useDispatch()
+
+    const handleAddItem = (data) => {
+        dispatch(addItem(data))
+    }
 
     return (
         <div className="flex justify-between p-5 m-5 border-b border-gray-300">
@@ -29,6 +41,7 @@ const ItemList = (data) => {
                 <button
                     className="mt-1 px-4 border border-green-600 text-green-700 rounded-md 
                        hover:bg-green-600 hover:text-white transition font-medium"
+                    onClick={() => handleAddItem(data)}
                 >
                     Add
                 </button>
