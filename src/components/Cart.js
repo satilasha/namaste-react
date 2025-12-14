@@ -4,7 +4,6 @@ import { clearCart } from "../utils/appStore/cartSlice"
 
 const Cart = () => {
     const cartItems = useSelector((store) => store.cart.items)
-    console.log("cartItems", cartItems)
 
     const dispatch = useDispatch()
 
@@ -39,7 +38,7 @@ const Cart = () => {
             {/* Cart Items */}
             <div className="space-y-4">
                 {cartItems.map((item) => (
-                    <ItemList key={item?.card?.info?.id} data={item} />
+                    <ItemList data-testid="cart-items" key={item?.card?.info?.id} data={item} />
                 ))}
             </div>
         </div>

@@ -1,0 +1,28 @@
+{
+    "info": {
+        "id": "567890",
+        "name": "Chinese Dragon",
+        "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/18/ba9f1f59-30d5-44de-afad-df6db8471ead_9648.jpg",
+        "locality": "Commercial Street",
+        "areaName": "East District",
+        "costForTwo": "₹350 for two",
+        "cuisines": [
+            "Chinese",
+            "Asian",
+            "Thai"
+        ],
+        "avgRating": 4.4,
+        "avgRatingString": "4.4",
+        "totalRatingsString": "9K+ ratings",
+        "veg": false,
+        "sla": {
+            "deliveryTime": 28,
+            "lastMileTravel": 2.8,
+            "slaString": "28 mins"
+        },
+        "aggregatedDiscountInfoV3": {
+            "header": "60% OFF",
+            "subHeader": "UPTO ₹120"
+        }
+    }
+}

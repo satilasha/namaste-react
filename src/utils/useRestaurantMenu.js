@@ -14,6 +14,7 @@ const useRestaurantMenu = (resId) => {
             if (!response.ok) throw new Error("Network response was not ok");
             const json = await response.json();
             console.log("Fetched menu data:", json);
+            
             setRestaurantData(json);
         } catch (err) {
             console.error("Fetch error:", err);

@@ -10,6 +10,19 @@ const Contact = () => {
             <p className="text-gray-600 mb-6">
                 If you have any questions, feel free to reach out to us!
             </p>
+            <form className="space-y-4">
+                <input className="border border-gray-600 px-4 py-2 rounded w-full"
+                    placeholder="Your Name"
+                    type="text">
+                </input>
+                <input className="border border-gray-600 px-4 py-2 rounded w-full"
+                    placeholder="Contact Number"
+                    type="text">
+                </input>
+                <button className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition">
+                    Submit
+                </button>
+            </form>
         </div>
     )
 }

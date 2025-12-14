@@ -35,7 +35,7 @@ const Body = () => {
             <div className="body">
                 <div className="px-60 h-56 mx-auto flex items-center justify-around">
                     <div className="flex items-center gap-4">
-                        <input text="text"
+                        <input data-testid="searchInput" text="text"
                             className=" w-80 px-4 py-3 rounded-xl bg-gray-100 shadow-md text-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:bg-white transition"
 
                             value={searchText} onChange={
@@ -66,7 +66,7 @@ const Body = () => {
                     <h1 className="text-2xl font-bold mb-6 w-full">Restaurants with online food delivery near you</h1>
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                         {filteredRes.map(restaurants => (
-                            <Link key={restaurants.info.id} to={`/restaurant/${restaurants?.info.id}`}>
+                            <Link data-testid="restaurant-card" key={restaurants.info.id} to={`/restaurant/${restaurants?.info.id}`}>
                                 {restaurants.info.promoted ? (<RestaurantCardPromoted resData={restaurants} />) : (<RestaurantCard resData={restaurants} />)}
                             </Link>
                         ))}

@@ -2,11 +2,9 @@ import { useDispatch } from "react-redux"
 import { IMAGE_CDN_URL } from "../utils/constants"
 import { addItem } from "../utils/appStore/cartSlice"
 
-const ItemList = ({ data }) => {
+const ItemList = ({ data , 'data-testid': testid }) => {
 
     const item = data?.card?.info
-
-    console.log(item)
 
     const { name, price, defaultPrice, description, imageId } = item
 
@@ -17,7 +15,7 @@ const ItemList = ({ data }) => {
     }
 
     return (
-        <div className="flex justify-between p-5 m-5 border-b border-gray-300">
+        <div  data-testid={testid} className="flex justify-between p-5 m-5 border-b border-gray-300">
 
             {/* Left: Item text */}
             <div className="w-9/12 pr-4">
